@@ -1,5 +1,10 @@
 # Genshin Toxicity Social Media Report
 
+<p align="center">
+  <img style="width: 75%" src="./community-toxicity.png">
+</p>
+
+
 ## ICA 2023 Research Proposal:
 
 - The communities that surround online gaming are heavily influenced by social toxicity. They can take on a variety of shapes both in-game and on social media. These actions may have severe adverse effects on the game's participants or even on people outside the group. Social media toxicity and its widespread presence in modern society have a significant impact that goes beyond the scope of a single game. We chose the game Genshin Impact to investigate. Despite being relatively new, this game already has a very large community and a very strong social media presence. Numerous online controversies have revolved around it, and the Genshin community has emerged.
@@ -52,7 +57,7 @@ https://doi.org/10.1109/NetGames.2015.7382991.
 
 ## Technologies Used / Planning to Use:
 
-- Python (libraries: requests, datetime, time, argparse, pandas, langdetect) for scraping tweet metadata from relevant hashtags for dataset
+- Python (libraries: requests, datetime, time, argparse, pandas, langdetect) for scraping and cleaning tweet metadata from relevant hashtags into dataset
 
 - Jupyter Notebook for training and grouping tweets into a comprehensive dataset visualization for further sentimental analysis
 
