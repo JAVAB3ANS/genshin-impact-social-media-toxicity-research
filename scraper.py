@@ -16,19 +16,16 @@ class TwitterScraper:
     2. Creates a constructor for the class Hashtag that takes in a parameter called hashtag
     3. Creates a method called __init__ that takes in a parameter called hashtag
     4. Sets the instance variable hashtag to the parameter hashtag 
-
     """
 
     def __init__(self, hashtag):
         self.hashtag = hashtag
 
     """
-
     1. Sets the parameters for the search query.
     2. The parameters are passed to the search_tweets() function.
     3. The search_tweets() function returns the tweets.
     4. The tweets are stored in the self.tweets variable. 
-
     """ 
 
     def set_params(self, scroll_value):
@@ -68,10 +65,8 @@ class TwitterScraper:
     # https://hackersandslackers.com/extract-data-from-complex-json-python/
 
     """
-
     1. Recursively searches for values of key in JSON tree.
     2. Returns all values of key in JSON tree.
-
     """
 
     def json_extract(self, obj, key):
@@ -95,10 +90,8 @@ class TwitterScraper:
         return values
 
     """
-
     1. It sends a POST request to the Twitter API to get a guest token.
     2. It then returns the guest token.
-
     """
 
     def get_xguest_token(self):
@@ -111,7 +104,6 @@ class TwitterScraper:
         return r.json()["guest_token"]
 
     """
-
     1. Initates the search request with the first scroll value.
     2. Gets the scroll value from the response.
     3. Sets the scroll value in the params for the next request.
@@ -122,7 +114,6 @@ class TwitterScraper:
     8. Saves the tweets to a csv file.
     9. Waits for 10 secs and gets a new guest token.
     10. Repeat steps 1-9 until there are no more tweets. 
-
     """
 
     def list_reviews(self):
@@ -186,11 +177,9 @@ class TwitterScraper:
         print("---------------------------------Tweets End-------------------------------------------------")
 
 """
-
 1. Parses the arguments from the command line.
 2. Creates a TwitterScraper object.
 3. Calls the list_reviews method on the TwitterScraper object.
-
 """
 
 if __name__ == "__main__":
@@ -201,3 +190,5 @@ if __name__ == "__main__":
     hashtag = args.hashtag
     ts = TwitterScraper(hashtag)
     ts.list_reviews()
+
+    # 2 permutations: #boycottgenshin and #boycottgenshinimpact for parameters
