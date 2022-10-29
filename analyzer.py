@@ -35,7 +35,7 @@ class SentimentAnalysis: # Class to perform sentiment analysis on the tweets
 
         # printing out data
         print("\n\nOutput:     ")
-        print(f"Overall user sentiments of {str(df.shape[0] - 1)} #boycottgenshin tweets.")
+        print(f"Overall user sentiments of {str(df.shape[0] - 1)} #boycottgenshin tweets")
         print()
         print("General Report: ")
 
@@ -69,7 +69,7 @@ class SentimentAnalysis: # Class to perform sentiment analysis on the tweets
         colors = ["lightgreen", "lightblue", "salmon"] # green, blue, red
         patches, texts = plt.pie(sizes, colors=colors, startangle=90) # startangle = 90 means that the pie chart will be divided into three parts
         plt.legend(patches, labels, loc="best") # add legend to the plot
-        plt.title(f"Overall user sentiments of {str(noOfSearchTerms)} {searchTerm} tweets.") # title of the pie chart
+        plt.title(f"Overall user sentiments of {str(noOfSearchTerms)} {searchTerm} tweets") # title of the pie chart
         plt.axis("equal") # Equal aspect ratio ensures that pie is drawn as a circle.
         plt.tight_layout() # to make the pie chart look perfect
         plt.show() # show the pie chart 
