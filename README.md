@@ -62,7 +62,7 @@ https://doi.org/10.1109/NetGames.2015.7382991.
 
 - The Genshin Impact community's reputation is not a good reflection of the true nature of the fanbase. Instead, it comes from a very loud, passionate minority whose actions kind of echo throughout the internet due to their dramatic nature. When we went through tweets, we found that there were proportionate amounts of differing opinions on the game (positive, neutral, and negative in even spread). 
 
-- The attitude towards Genshin can generally be concluded as mixed. However, it should be noted that there is a 10% greater quantity of negative feedback compared to positive feedback so it does skew towards negative.
+- The attitude towards Genshin can generally be concluded as mixed. However, it should be noted that there is a 6% greater quantity of negative feedback compared to positive feedback so it does skew towards negative.
 
 - One side of the community bashes the developers for a myriad of reasons, one side has nothing to do with the game, and the other aren’t necessarily “entitled” and/or “childish” as most outsiders would presume. 
 
@@ -79,6 +79,7 @@ https://doi.org/10.1109/NetGames.2015.7382991.
 1) [asimsinian/twitter_scraper](https://github.com/asimsinan/twitter_scraper): Tweet Collection Using Twitter's Explore feature (GitHub)
 2) [neeraj1909/twitter_sentimental_analysis](https://github.com/neeraj1909/twitter_sentimental_analysis): Sentimental Analysis of Tweets (GitHub fork from Medium article)
 3) [Tyree Stevenson - How to analyze the sentiment of tweets](https://medium.com/@DataStevenson/how-to-analyze-the-sentiment-of-tweets-c8b5aece6962): Sentimental Analysis of Tweets (Medium article)
+4) [Catris Code - Tweets Cleaning with Python](https://catriscode.com/2021/05/01/tweets-cleaning-with-python/) : Santizing Tweet Metadata
 
 ## Team Members:
 

@@ -20,6 +20,16 @@ class TwitterScraper:
 
     def __init__(self, hashtag):
         self.hashtag = hashtag
+        self.names = [] 
+        self.tweet_links = []
+        self.tweet_array = [] 
+        self.tweet_dates = [] 
+        self.retweet_array = []
+        self.favorite_array = []
+        self.replies = []
+        self.quotes = []
+        self.favorited_array = []
+        self.retweeted_array = []
 
     """
     1. Sets the parameters for the search query.
@@ -137,16 +147,6 @@ class TwitterScraper:
                 cursor_scroll_value = self.json_extract(response.json(), "value")[1]
                 #set this value in the params for request
                 self.set_params(cursor_scroll_value)
-                names = [] 
-                tweet_links = []
-                tweet_array = [] 
-                tweet_dates = [] 
-                retweet_array = []
-                favorite_array = []
-                replies = []
-                quotes = []
-                favorited_array = []
-                retweeted_array = []
                 for tweet in tweets:   
                     if detect(tweets[tweet]["full_text"]) != "en": # if the tweet's full text is not in english
                         continue
@@ -156,18 +156,18 @@ class TwitterScraper:
                         "%Y-%m-%d") 
                     # Get complete formatted tweet link
                     tweet_link = f"https://twitter.com/{users[str(tweets[tweet]['user_id'])]['screen_name']}/status/{tweets[tweet]['id']}?s=20&t={tweets[tweet]['user_id']}"
-                    names.append(users[str(tweets[tweet]["user_id"])]["screen_name"])  
-                    tweet_links.append(tweet_link)
-                    tweet_array.append(tweets[tweet]["full_text"])
-                    tweet_dates.append(tweet_date) 
-                    retweet_array.append(tweets[tweet]["retweet_count"])
-                    favorite_array.append(tweets[tweet]["favorite_count"])
-                    replies.append(tweets[tweet]["reply_count"])
-                    quotes.append(tweets[tweet]["quote_count"])
-                    favorited_array.append(tweets[tweet]["favorited"])
-                    retweeted_array.append(tweets[tweet]["retweeted"])
+                    self.names.append(users[str(tweets[tweet]["user_id"])]["screen_name"])  
+                    self.tweet_links.append(tweet_link)
+                    self.tweet_array.append(tweets[tweet]["full_text"])
+                    self.tweet_dates.append(tweet_date) 
+                    self.retweet_array.append(tweets[tweet]["retweet_count"])
+                    self.favorite_array.append(tweets[tweet]["favorite_count"])
+                    self.replies.append(tweets[tweet]["reply_count"])
+                    self.quotes.append(tweets[tweet]["quote_count"])
+                    self.favorited_array.append(tweets[tweet]["favorited"])
+                    self.retweeted_array.append(tweets[tweet]["retweeted"])
 
-                df = pd.DataFrame({"ACCOUNT NAME": names, "TWEET LINK": tweet_links, "TWEET": tweet_array, "TWEET DATE": tweet_dates, "RETWEETS": retweet_array, "FAVORITES": favorite_array, "REPLIES": replies, "QUOTES": quotes, "FAVORITED": favorited_array, "RETWEETED": retweeted_array})
+                df = pd.DataFrame({"ACCOUNT NAME": self.names, "TWEET LINK": self.tweet_links, "TWEET": self.tweet_array, "TWEET DATE": self.tweet_dates, "RETWEETS": self.retweet_array, "FAVORITES": self.favorite_array, "REPLIES": self.replies, "QUOTES": self.quotes, "FAVORITED": self.favorited_array, "RETWEETED": self.retweeted_array})
                 df.to_csv(f"{hashtag}.csv", mode="a", index=False, header=False)
             except:
                 # If anything goes wrong, I'll wait for 10 secs and get a new guest token

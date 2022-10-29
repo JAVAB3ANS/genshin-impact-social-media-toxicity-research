@@ -2,6 +2,9 @@ import pandas as pd
 import re
 from textblob import TextBlob
 import matplotlib.pyplot as plt 
+import nltk
+nltk.download("words")
+words = set(nltk.corpus.words.words())
 
 class SentimentAnalysis: # Class to perform sentiment analysis on the tweets
     def analyzeSentiments(self): # function to analyze sentiments
@@ -11,7 +14,7 @@ class SentimentAnalysis: # Class to perform sentiment analysis on the tweets
         negative = 0 # negative tweets
         neutral = 0 # neutral tweets
 
-        df = pd.read_csv("./#boycottgenshin.csv") # read the csv file
+        df = pd.read_csv("./#boycottgenshin.csv", dtype={"third_column": "str"}, low_memory=False) # read the csv file
 
         # iterate through the tweets in the csv file
         # add a column to the csv file to store the polarity of each tweet
@@ -54,9 +57,32 @@ class SentimentAnalysis: # Class to perform sentiment analysis on the tweets
 
         self.plotPieChart(positive, negative, neutral, "#boycottgenshin", df.shape[0] - 1) # calling the function to plot pie chart
 
-    def cleanTweet(self, tweet): # function to clean tweet
+    def cleanTweet(self, tweet): # function to clean the tweet
         # Remove Links, Special Characters etc from tweet
-        return " ".join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t]) | (\w +:\ / \ / \S +)", " ", tweet).split())
+        if type(tweet) == float:
+            return ""
+        temp = self.deEmojify(tweet).lower()
+        temp = re.sub("'", "", temp) # to avoid removing contractions in english
+        temp = re.sub("@[A-Za-z0-9_]+","", temp) # remove @mentions
+        temp = re.sub("#[A-Za-z0-9_]+","", temp) # remove #hashtags
+        temp = re.sub(r"(?:\@|http?\://|https?\://|www)\S+", "", temp) # remove hyperlinks
+        temp = re.sub('[()!?]', " ", temp) # remove special characters
+        temp = re.sub('\[.*?\]'," ", temp) # remove special characters
+        temp = re.sub("[^a-z0-9]"," ", temp) # remove special characters
+        temp = " ".join(w for w in nltk.wordpunct_tokenize(temp) \
+         if w.lower() in words or not w.isalpha()) #Remove non-english tweets (not 100% success)
+        temp = temp.split() # split the tweet into words
+        temp = " ".join(word for word in temp) # join the words to make a sentence
+        return temp 
+
+    def deEmojify(self, text): # function to remove emojis from the tweet
+        regex_pattern = re.compile(pattern = "[" 
+            u"\U0001F600-\U0001F64F"  # emoticons
+            u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+            u"\U0001F680-\U0001F6FF"  # transport & map symbols
+            u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+                            "]+", flags = re.UNICODE)
+        return regex_pattern.sub(r'',text)
 
     # function to calculate percentage
     def percentage(self, part, whole):  
