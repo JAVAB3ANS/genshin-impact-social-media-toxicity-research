@@ -41,4 +41,4 @@
 1) [asimsinian/twitter_scraper](https://github.com/asimsinan/twitter_scraper): Tweet Collection Using Twitter's Explore feature (GitHub)
 2) [neeraj1909/twitter_sentimental_analysis](https://github.com/neeraj1909/twitter_sentimental_analysis): Sentimental Analysis of Tweets (GitHub fork from Medium article)
 3) [Tyree Stevenson - How to analyze the sentiment of tweets](https://medium.com/@DataStevenson/how-to-analyze-the-sentiment-of-tweets-c8b5aece6962): Sentimental Analysis of Tweets (Medium article)
-4) [Catris Code - Tweets Cleaning with Python](https://catriscode.com/2021/05/01/tweets-cleaning-with-python/) : Santizing Tweet Metadata
+4) [Catris Code - Tweets Cleaning with Python](https://catriscode.com/2021/05/01/tweets-cleaning-with-python/) : Sanitizing Tweet Metadata
