@@ -110,7 +110,7 @@ class TwitterScraper:
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
         }
 
-        r = requests.post("https://api.twitter.com/1.1/guest/activate.json", headers=guest_token_header)
+        r = requests.post("https://api.twitter.com/1.1/guest/activate.json", headers=guest_token_header, timeout=60)
         return r.json()["guest_token"]
 
     """
@@ -137,7 +137,7 @@ class TwitterScraper:
         while (len(tweets) > 0):
             try:
                 response = requests.get("https://twitter.com/i/api/2/search/adaptive.json", headers=self.API_HEADERS,
-                                        params=self.params)
+                                        params=self.params, timeout=60)
                 #The tweets are located in ["globalObjects"]["tweets"] key
                 tweets = response.json()["globalObjects"]["tweets"]
                 #I'll also get the screen name of the user who posted that tweet. This is located in ["globalObjects"]["users"] key
